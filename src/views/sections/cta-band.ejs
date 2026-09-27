@@ -1,0 +1,17 @@
+<%
+// Params: section { id, headline, supporting, cta }
+const band = locals.section || {};
+%>
+<section id="<%= band.id %>" class="rlt-section rlt-cta-band">
+  <div class="rlt-container rlt-cta-band__inner">
+    <h2 class="rlt-cta-band__headline"><%= band.headline %></h2>
+<% if (band.supporting) { %>
+    <p class="rlt-cta-band__supporting md-body-large"><%= band.supporting %></p>
+<% } %>
+<% if (band.cta) { %>
+    <div class="rlt-cta-band__actions">
+      <%- include('partials/button', { label: band.cta.label, href: band.cta.href, type: 'button', variant: band.cta.variant || 'filled', color: band.cta.color || 'secondary', icon: null, trailingIcon: null, full: false, class: '', attrs: '' }) %>
+    </div>
+<% } %>
+  </div>
+</section>

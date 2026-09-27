@@ -1,0 +1,35 @@
+<%
+// Params: variant (elevated|filled|outlined), title, text, icon, image {src,ratio,label,alt}, href, actions []
+const card = {
+  variant: ['elevated', 'filled', 'outlined'].includes(locals.variant) ? locals.variant : 'elevated',
+  title: locals.title || '',
+  text: locals.text || '',
+  icon: locals.icon || null,
+  image: locals.image || null,
+  href: locals.href || null,
+  actions: Array.isArray(locals.actions) ? locals.actions : [],
+};
+%>
+<article class="md-card md-card--<%= card.variant %><%= card.href ? ' md-card--clickable' : '' %>">
+<% if (card.image) { %>
+  <div class="md-card__media">
+    <%- include('partials/image-placeholder', { src: card.image.src || null, ratio: card.image.ratio || '16/9', label: card.image.label || card.title, alt: card.image.alt || '', caption: '', class: '' }) %>
+  </div>
+<% } %>
+  <div class="md-card__content">
+<% if (card.icon) { %>
+    <span class="md-card__icon"><%- include('partials/icon', { name: card.icon, class: '' }) %></span>
+<% } %>
+    <h3 class="md-card__title md-title-large"><% if (card.href) { %><a class="md-card__link" href="<%= card.href %>"><%= card.title %></a><% } else { %><%= card.title %><% } %></h3>
+<% if (card.text) { %>
+    <p class="md-card__text md-body-medium"><%= card.text %></p>
+<% } %>
+  </div>
+<% if (card.actions.length) { %>
+  <div class="md-card__actions">
+<% card.actions.forEach((a) => { %>
+    <%- include('partials/button', { label: a.label, href: a.href || null, type: 'button', variant: a.variant || 'text', color: a.color || 'primary', icon: a.icon || null, trailingIcon: a.trailingIcon || null, full: false, class: '', attrs: '' }) %>
+<% }); %>
+  </div>
+<% } %>
+</article>

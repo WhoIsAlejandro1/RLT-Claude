@@ -1,0 +1,18 @@
+<header class="md-top-app-bar" id="top-app-bar">
+  <div class="md-top-app-bar__inner rlt-container">
+    <%- include('partials/logo', { variant: 'mark' }) %>
+    <nav class="md-top-app-bar__nav" aria-label="Primary">
+      <ul class="md-top-app-bar__list">
+<% site.nav.forEach((item) => { const active = isActive(item.href); %>
+        <li><a class="md-nav-link<%= active ? ' is-active' : '' %>" href="<%= item.href %>"<%- active ? ' aria-current="page"' : '' %> data-ripple><%= item.label %></a></li>
+<% }); %>
+      </ul>
+    </nav>
+    <div class="md-top-app-bar__actions">
+      <%- include('partials/button', { label: site.cta.label, href: site.cta.href, type: 'button', variant: 'filled', color: 'tertiary', icon: null, trailingIcon: null, full: false, class: 'md-top-app-bar__cta', attrs: '' }) %>
+      <button type="button" class="md-icon-button md-top-app-bar__menu" aria-label="Open navigation menu" aria-controls="nav-drawer" aria-expanded="false" data-drawer-open data-ripple>
+        <%- include('partials/icon', { name: 'menu', class: '' }) %>
+      </button>
+    </div>
+  </div>
+</header>

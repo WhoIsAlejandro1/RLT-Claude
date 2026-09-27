@@ -1,0 +1,21 @@
+{
+  "name": "renewed-life-therapies-site",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Renewed Life Therapies marketing site: Express + EJS + hand-rolled Material Design 3 tokens",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js",
+    "logo": "powershell -NoProfile -ExecutionPolicy Bypass -File scripts/make-logo-variants.ps1"
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "dependencies": {
+    "ejs": "6.0.1",
+    "express": "5.2.1",
+    "express-ejs-layouts": "2.5.1",
+    "renewed-life-therapies-site": "file:"
+  }
+}

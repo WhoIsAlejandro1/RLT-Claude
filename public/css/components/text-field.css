@@ -1,0 +1,47 @@
+/* M3 outlined text field with floating label, plus the declarative form wrapper. */
+.md-text-field { --_bg: var(--md-comp-field-bg, var(--md-sys-color-surface)); position: relative; display: flex; flex-direction: column; min-width: 0; }
+.md-text-field__input {
+  width: 100%; min-height: 56px; padding: 16px 15px; border: 1px solid var(--md-sys-color-outline);
+  border-radius: var(--md-sys-shape-corner-extra-small); background: transparent; color: var(--md-sys-color-on-surface);
+  font-family: var(--md-sys-typescale-body-large-font); font-size: var(--md-sys-typescale-body-large-size);
+  line-height: var(--md-sys-typescale-body-large-line-height); letter-spacing: var(--md-sys-typescale-body-large-tracking);
+  outline: none; appearance: none; -webkit-appearance: none;
+  transition: border-color var(--md-sys-motion-duration-short2) var(--md-sys-motion-easing-standard), box-shadow var(--md-sys-motion-duration-short2) var(--md-sys-motion-easing-standard);
+}
+.md-text-field__input:hover { border-color: var(--md-sys-color-on-surface); }
+.md-text-field__input:focus { border-color: var(--md-sys-color-primary); box-shadow: inset 0 0 0 1px var(--md-sys-color-primary); }
+.md-text-field__input:focus-visible { outline: none; }
+.md-text-field--multiline .md-text-field__input { min-height: 120px; resize: vertical; }
+.md-text-field--select .md-text-field__input { padding-right: 44px; cursor: pointer; }
+.md-text-field--select::after {
+  content: ""; position: absolute; right: 18px; top: 22px; width: 8px; height: 8px; pointer-events: none;
+  border-right: 2px solid var(--md-sys-color-on-surface-variant); border-bottom: 2px solid var(--md-sys-color-on-surface-variant); transform: rotate(45deg);
+}
+.md-text-field__label {
+  position: absolute; left: 12px; top: 28px; transform: translateY(-50%); transform-origin: left center;
+  max-width: calc(100% - 32px); padding: 0 4px; background: var(--_bg); color: var(--md-sys-color-on-surface-variant);
+  font-family: var(--md-sys-typescale-body-large-font); font-size: var(--md-sys-typescale-body-large-size); line-height: 1.25;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis; pointer-events: none;
+  transition: top var(--md-sys-motion-duration-short4) var(--md-sys-motion-easing-standard), transform var(--md-sys-motion-duration-short4) var(--md-sys-motion-easing-standard), color var(--md-sys-motion-duration-short4) var(--md-sys-motion-easing-standard);
+}
+.md-text-field__input:focus ~ .md-text-field__label,
+.md-text-field__input:not(:placeholder-shown) ~ .md-text-field__label,
+.md-text-field--select .md-text-field__label { top: 0; transform: translateY(-50%) scale(0.75); color: var(--md-sys-color-primary); }
+.md-text-field__input:not(:focus):not(:placeholder-shown) ~ .md-text-field__label,
+.md-text-field--select .md-text-field__input:not(:focus) ~ .md-text-field__label { color: var(--md-sys-color-on-surface-variant); }
+.md-text-field__required { color: var(--md-sys-color-error); }
+.md-text-field__supporting { min-height: 20px; padding: 4px 16px 0; color: var(--md-sys-color-on-surface-variant); }
+.md-text-field--error .md-text-field__input { border-color: var(--md-sys-color-error); }
+.md-text-field--error .md-text-field__input:focus { border-color: var(--md-sys-color-error); box-shadow: inset 0 0 0 1px var(--md-sys-color-error); }
+.md-text-field--error .md-text-field__label, .md-text-field--error .md-text-field__supporting { color: var(--md-sys-color-error) !important; }
+
+.md-form { display: flex; flex-direction: column; gap: 4px; }
+.md-form__fields { display: grid; gap: 4px; }
+.md-form__actions { margin-top: 8px; }
+.md-form__error { color: var(--md-sys-color-error); margin-bottom: 4px; }
+.md-form__hp { position: absolute; left: -10000px; top: auto; width: 1px; height: 1px; overflow: hidden; }
+.md-form--inline { flex-direction: row; flex-wrap: wrap; align-items: flex-start; gap: 8px 12px; }
+.md-form--inline .md-form__fields { flex: 1 1 240px; }
+.md-form--inline .md-form__actions { margin-top: 0; }
+.md-form--inline .md-form__actions .md-button { min-height: 56px; }
+.md-form--inline .md-form__error { flex-basis: 100%; }

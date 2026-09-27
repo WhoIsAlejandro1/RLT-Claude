@@ -1,0 +1,20 @@
+<%
+// variant: 'mark'   -> wreath+flame image + HTML wordmark (header, drawer)
+//          'footer' -> same, larger, with wordmark colors for the dark footer
+//          'lockup' -> full transparent PNG (only legible on mid-tone backgrounds: its
+//                      "RENEWED LIFE" is dark olive and its "THERAPIES" is cream)
+const logoVariant = ['mark', 'footer', 'lockup'].includes(locals.variant) ? locals.variant : 'mark';
+%>
+<% if (logoVariant === 'lockup') { %>
+<a class="rlt-logo rlt-logo--lockup" href="/" aria-label="<%= site.name %> – home">
+  <img class="rlt-logo__lockup" src="<%= site.logo.lockup %>" width="240" height="218" alt="<%= site.logo.alt %>" loading="lazy">
+</a>
+<% } else { %>
+<a class="rlt-logo rlt-logo--mark<%= logoVariant === 'footer' ? ' rlt-logo--footer' : '' %>" href="/" aria-label="<%= site.name %> – home">
+  <img class="rlt-logo__mark" src="<%= site.logo.mark %>" srcset="<%= site.logo.mark %> 1x, <%= site.logo.mark2x %> 3x" width="40" height="40" alt="">
+  <span class="rlt-logo__wordmark" aria-hidden="true">
+    <span class="rlt-logo__name">Renewed Life</span>
+    <span class="rlt-logo__sub">Therapies</span>
+  </span>
+</a>
+<% } %>

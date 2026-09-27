@@ -1,0 +1,26 @@
+<%
+// Params: form (spec from src/content), inline (single-row layout), submitColor
+// Reads res.locals errors / values / formId so only the submitted form shows errors.
+const formSpec = locals.form;
+const isThisForm = locals.formId === formSpec.id;
+const formErrors = isThisForm && locals.errors ? locals.errors : {};
+const formValues = isThisForm && locals.values ? locals.values : {};
+const isInline = !!locals.inline;
+const hasErrors = Object.keys(formErrors).length > 0;
+%>
+<form class="md-form<%= isInline ? ' md-form--inline' : '' %>" id="form-<%= formSpec.id %>" action="<%= formSpec.action %>" method="post" novalidate>
+  <div class="md-form__hp" aria-hidden="true">
+    <label>Leave this field empty <input type="text" name="website" tabindex="-1" autocomplete="off"></label>
+  </div>
+<% if (hasErrors) { %>
+  <p class="md-form__error md-body-medium" role="alert">Please fix the highlighted fields.</p>
+<% } %>
+  <div class="md-form__fields">
+<% formSpec.fields.forEach((f) => { %>
+    <%- include('partials/text-field', { name: f.name, id: 'form-' + formSpec.id + '-' + f.name, label: f.label, type: f.type || 'text', value: formValues[f.name] || '', required: !!f.required, autocomplete: f.autocomplete || null, hint: f.hint || '', error: formErrors[f.name] || '', multiline: !!f.multiline, rows: f.rows || 4, options: f.options || null, max: f.max || null }) %>
+<% }); %>
+  </div>
+  <div class="md-form__actions">
+    <%- include('partials/button', { label: formSpec.submit, href: null, type: 'submit', variant: 'filled', color: locals.submitColor || 'primary', icon: null, trailingIcon: null, full: !isInline, class: '', attrs: '' }) %>
+  </div>
+</form>

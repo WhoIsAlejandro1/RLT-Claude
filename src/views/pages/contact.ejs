@@ -1,0 +1,34 @@
+<%
+const contactPhoneHref = 'tel:' + String(site.contact.phone).replace(/[^+\d]/g, '');
+%>
+<%- include('partials/hero', { hero: content.hero }) %>
+<section id="contact" class="rlt-section rlt-contact">
+  <div class="rlt-container rlt-contact__grid">
+    <div class="rlt-contact__form md-card md-card--outlined">
+      <div class="md-card__content">
+        <%- include('partials/section-header', { eyebrow: '', headline: content.contactForm.headline, supporting: '', align: 'start', level: 2 }) %>
+        <%- include('partials/form', { form: content.contactForm, inline: false, submitColor: 'primary' }) %>
+      </div>
+    </div>
+    <aside class="rlt-contact__info">
+      <%- include('partials/section-header', { eyebrow: '', headline: content.info.headline, supporting: '', align: 'start', level: 2 }) %>
+      <ul class="rlt-contact__list md-body-large">
+        <li><%- include('partials/icon', { name: 'call', class: '' }) %><a href="<%= contactPhoneHref %>"><%= site.contact.phone %></a></li>
+        <li><%- include('partials/icon', { name: 'mail', class: '' }) %><a href="mailto:<%= site.contact.email %>"><%= site.contact.email %></a></li>
+        <li><%- include('partials/icon', { name: 'location_on', class: '' }) %><span><%- site.contact.address.map((line) => `<span class="rlt-contact__line">${line}</span>`).join('') %></span></li>
+        <li><%- include('partials/icon', { name: 'schedule', class: '' }) %><span><%- site.contact.hours.map((line) => `<span class="rlt-contact__line">${line}</span>`).join('') %></span></li>
+      </ul>
+      <%- include('partials/image-placeholder', { src: content.info.map.src || null, ratio: content.info.map.ratio || '16/9', label: content.info.map.label || 'Map', alt: '', caption: '', class: 'rlt-contact__map' }) %>
+    </aside>
+  </div>
+</section>
+<section id="connect" class="rlt-section rlt-connect rlt-section--tonal">
+  <div class="rlt-container rlt-connect__inner">
+    <%- include('partials/section-header', { eyebrow: '', headline: content.connectForm.headline, supporting: content.connectForm.supporting || '', align: 'center', level: 2 }) %>
+    <div class="rlt-connect__form md-card md-card--elevated">
+      <div class="md-card__content">
+        <%- include('partials/form', { form: content.connectForm, inline: false, submitColor: 'tertiary' }) %>
+      </div>
+    </div>
+  </div>
+</section>

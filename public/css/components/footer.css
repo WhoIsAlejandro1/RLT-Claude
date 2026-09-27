@@ -1,0 +1,31 @@
+/* Footer on the deep-green tertiary surface (the only place the full logo lockup is legible). */
+.rlt-footer { margin-top: auto; padding-block: 48px 24px; background: var(--md-sys-color-tertiary); color: var(--md-sys-color-on-tertiary); }
+.rlt-footer__grid { display: grid; gap: 32px; }
+.rlt-footer__brand { display: flex; flex-direction: column; gap: 8px; }
+.rlt-footer__tagline { color: color-mix(in srgb, var(--md-sys-color-on-tertiary) 80%, transparent); }
+.rlt-footer__title { margin-bottom: 12px; color: var(--md-sys-color-on-tertiary); text-transform: uppercase; letter-spacing: 0.08em; }
+.rlt-footer__links { display: flex; flex-direction: column; gap: 10px; }
+.rlt-footer__link, .rlt-footer__line { color: var(--md-sys-color-tertiary-container); text-decoration: none; }
+.rlt-footer__link:hover { color: #FFFFFF; text-decoration: underline; }
+.rlt-footer__link--icon { display: inline-flex; align-items: flex-start; gap: 10px; }
+.rlt-social { display: flex; gap: 8px; margin-top: 20px; }
+.rlt-social__link {
+  position: relative; display: inline-grid; place-items: center; width: 40px; height: 40px;
+  border-radius: var(--md-sys-shape-corner-full); border: 1px solid color-mix(in srgb, var(--md-sys-color-on-tertiary) 40%, transparent);
+  color: var(--md-sys-color-on-tertiary); text-decoration: none; font-weight: 500;
+}
+.rlt-footer__legal {
+  display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px 24px; margin-top: 40px; padding-top: 16px;
+  border-top: 1px solid color-mix(in srgb, var(--rlt-gold) 40%, transparent);
+  color: color-mix(in srgb, var(--md-sys-color-on-tertiary) 75%, transparent);
+}
+.rlt-footer__legal-links { display: flex; gap: 16px; }
+.rlt-footer__legal-links a { color: inherit; }
+@media (min-width: 600px) {
+  .rlt-footer__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .rlt-footer__brand { grid-column: 1 / -1; }
+}
+@media (min-width: 840px) {
+  .rlt-footer__grid { grid-template-columns: 1.4fr 1fr 1fr 1.3fr; }
+  .rlt-footer__brand { grid-column: auto; }
+}

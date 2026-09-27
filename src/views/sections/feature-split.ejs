@@ -1,0 +1,23 @@
+<%
+// Params: section { id, eyebrow, headline, text[], cta, image, reverse }, tonal
+const feat = locals.section || {};
+const featImage = feat.image || {};
+%>
+<section id="<%= feat.id %>" class="rlt-section rlt-feature<%= feat.reverse ? ' rlt-feature--reverse' : '' %><%= locals.tonal ? ' rlt-section--tonal' : '' %>">
+  <div class="rlt-container rlt-feature__grid">
+    <div class="rlt-feature__copy">
+      <%- include('partials/section-header', { eyebrow: feat.eyebrow || '', headline: feat.headline || '', supporting: '', align: 'start', level: 2 }) %>
+<% (feat.text || []).forEach((paragraph) => { %>
+      <p class="rlt-feature__text md-body-large"><%= paragraph %></p>
+<% }); %>
+<% if (feat.cta) { %>
+      <div class="rlt-feature__actions">
+        <%- include('partials/button', { label: feat.cta.label, href: feat.cta.href, type: 'button', variant: feat.cta.variant || 'filled', color: feat.cta.color || 'primary', icon: null, trailingIcon: feat.cta.trailingIcon || null, full: false, class: '', attrs: '' }) %>
+      </div>
+<% } %>
+    </div>
+    <div class="rlt-feature__media">
+      <%- include('partials/image-placeholder', { src: featImage.src || null, ratio: featImage.ratio || '4/3', label: featImage.label || feat.headline || 'Image', alt: featImage.alt || '', caption: '', class: '' }) %>
+    </div>
+  </div>
+</section>

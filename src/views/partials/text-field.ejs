@@ -1,0 +1,43 @@
+<%
+// Params: name, id, label, type, value, required, autocomplete, hint, error, multiline, rows, options, max
+const tf = {
+  name: locals.name,
+  id: locals.id || locals.name,
+  label: locals.label || locals.name,
+  type: locals.type || 'text',
+  value: locals.value == null ? '' : String(locals.value),
+  required: !!locals.required,
+  autocomplete: locals.autocomplete || null,
+  hint: locals.hint || '',
+  error: locals.error || '',
+  multiline: !!locals.multiline,
+  rows: Number(locals.rows) || 4,
+  options: Array.isArray(locals.options) ? locals.options : null,
+  max: Number(locals.max) || null,
+};
+const supportingId = tf.id + '-supporting';
+// Attribute values here come from trusted content specs, never from user input.
+const tfShared =
+  ' id="' + tf.id + '" name="' + tf.name + '"' +
+  (tf.required ? ' required' : '') +
+  (tf.autocomplete ? ' autocomplete="' + tf.autocomplete + '"' : '') +
+  (tf.max ? ' maxlength="' + tf.max + '"' : '') +
+  (tf.error ? ' aria-invalid="true"' : '') +
+  ((tf.error || tf.hint) ? ' aria-describedby="' + supportingId + '"' : '');
+%>
+<div class="md-text-field md-text-field--outlined<%= tf.error ? ' md-text-field--error' : '' %><%= tf.multiline ? ' md-text-field--multiline' : '' %><%= tf.options ? ' md-text-field--select' : '' %>">
+<% if (tf.options) { %>
+  <select class="md-text-field__input"<%- tfShared %>>
+    <option value=""<%= tf.value === '' ? ' selected' : '' %>></option>
+<% tf.options.forEach((opt) => { %>
+    <option value="<%= opt %>"<%= tf.value === opt ? ' selected' : '' %>><%= opt %></option>
+<% }); %>
+  </select>
+<% } else if (tf.multiline) { %>
+  <textarea class="md-text-field__input" rows="<%= tf.rows %>" placeholder=" "<%- tfShared %>><%= tf.value %></textarea>
+<% } else { %>
+  <input class="md-text-field__input" type="<%= tf.type %>" value="<%= tf.value %>" placeholder=" "<%- tfShared %>>
+<% } %>
+  <label class="md-text-field__label" for="<%= tf.id %>"><%= tf.label %><% if (tf.required) { %><span class="md-text-field__required" aria-hidden="true"> *</span><% } %></label>
+  <p class="md-text-field__supporting md-body-small" id="<%= supportingId %>"><%= tf.error || tf.hint %></p>
+</div>

@@ -1,0 +1,36 @@
+/* Containers, sections, grid and the M3 window-size-class breakpoints (600 / 840 / 1200). */
+.rlt-container { width: 100%; max-width: var(--rlt-content-max); margin-inline: auto; padding-inline: var(--rlt-margin); }
+.rlt-section { padding-block: var(--rlt-section-gap); }
+.rlt-section--tonal { background: var(--md-sys-color-surface-container-low); --md-comp-field-bg: var(--md-sys-color-surface-container-low); }
+.rlt-grid { display: grid; grid-template-columns: repeat(var(--rlt-columns), minmax(0, 1fr)); gap: var(--rlt-gutter); }
+.rlt-span-4 { grid-column: span 4; }
+.rlt-span-6 { grid-column: span 6; }
+.rlt-span-8 { grid-column: span 8; }
+.rlt-span-12 { grid-column: span 12; }
+.rlt-notice { padding-top: 16px; }
+.rlt-scroll-sentinel { position: absolute; top: 0; left: 0; width: 1px; height: 1px; pointer-events: none; }
+
+.md-visually-hidden { position: absolute !important; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); clip-path: inset(50%); white-space: nowrap; }
+.md-skip-link { position: absolute; top: 8px; left: 8px; z-index: 100; padding: 8px 16px; border-radius: var(--md-sys-shape-corner-full); background: var(--md-sys-color-inverse-surface); color: var(--md-sys-color-inverse-on-surface); text-decoration: none; transform: translateY(-300%); transition: transform var(--md-sys-motion-duration-short3) var(--md-sys-motion-easing-standard); }
+.md-skip-link:focus { transform: none; }
+
+@media (min-width: 600px) {
+  :root { --rlt-margin: 24px; --rlt-gutter: 24px; --rlt-columns: 8; --rlt-section-gap: 64px; }
+  .rlt-span-md-4 { grid-column: span 4; }
+  .rlt-span-md-6 { grid-column: span 6; }
+  .rlt-span-md-8 { grid-column: span 8; }
+  .rlt-span-md-12 { grid-column: span 12; }
+}
+@media (min-width: 840px) {
+  :root { --rlt-columns: 12; --rlt-section-gap: 80px; }
+  .rlt-span-lg-4 { grid-column: span 4; }
+  .rlt-span-lg-6 { grid-column: span 6; }
+  .rlt-span-lg-8 { grid-column: span 8; }
+  .rlt-span-lg-12 { grid-column: span 12; }
+}
+@media (min-width: 1200px) {
+  :root { --rlt-section-gap: 96px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important; }
+}

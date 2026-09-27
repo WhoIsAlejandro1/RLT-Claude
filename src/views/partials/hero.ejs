@@ -1,0 +1,45 @@
+<%
+// Params: hero { variant: 'split'|'simple', eyebrow, headline, subhead, primaryCta, secondaryCta, image }
+const hero = locals.hero || {};
+const heroVariant = hero.variant === 'simple' ? 'simple' : 'split';
+const heroImage = hero.image || {};
+const pCta = hero.primaryCta || null;
+const sCta = hero.secondaryCta || null;
+%>
+<% if (heroVariant === 'simple') { %>
+<section class="rlt-hero rlt-hero--simple">
+  <div class="rlt-container rlt-hero__inner">
+    <h1 class="rlt-hero__headline"><%= hero.headline %></h1>
+<% if (hero.subhead) { %>
+    <p class="rlt-hero__subhead md-title-large"><%= hero.subhead %></p>
+<% } %>
+  </div>
+</section>
+<% } else { %>
+<section class="rlt-hero rlt-hero--split">
+  <div class="rlt-container rlt-hero__grid">
+    <div class="rlt-hero__copy">
+<% if (hero.eyebrow) { %>
+      <p class="rlt-hero__eyebrow md-label-large"><%= hero.eyebrow %></p>
+<% } %>
+      <h1 class="rlt-hero__headline"><%= hero.headline %></h1>
+<% if (hero.subhead) { %>
+      <p class="rlt-hero__subhead md-title-large"><%= hero.subhead %></p>
+<% } %>
+<% if (pCta || sCta) { %>
+      <div class="rlt-hero__actions">
+<% if (pCta) { %>
+        <%- include('partials/button', { label: pCta.label, href: pCta.href, type: 'button', variant: pCta.variant || 'filled', color: pCta.color || 'primary', icon: null, trailingIcon: pCta.trailingIcon || null, full: false, class: '', attrs: '' }) %>
+<% } %>
+<% if (sCta) { %>
+        <%- include('partials/button', { label: sCta.label, href: sCta.href, type: 'button', variant: sCta.variant || 'outlined', color: sCta.color || 'primary', icon: null, trailingIcon: null, full: false, class: '', attrs: '' }) %>
+<% } %>
+      </div>
+<% } %>
+    </div>
+    <div class="rlt-hero__media">
+      <%- include('partials/image-placeholder', { src: heroImage.src || null, ratio: heroImage.ratio || '4/3', label: heroImage.label || 'Hero image', alt: heroImage.alt || '', caption: '', class: '' }) %>
+    </div>
+  </div>
+</section>
+<% } %>

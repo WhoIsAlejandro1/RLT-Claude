@@ -1,0 +1,40 @@
+/* M3 top app bar (sticky) with inline nav from 840px and the brand logo lockup. */
+.md-top-app-bar {
+  position: sticky; top: 0; z-index: 20; height: var(--rlt-appbar-height);
+  background: var(--md-sys-color-surface);
+  transition: background-color var(--md-sys-motion-duration-short4) var(--md-sys-motion-easing-standard), box-shadow var(--md-sys-motion-duration-short4) var(--md-sys-motion-easing-standard);
+}
+.md-top-app-bar.is-scrolled { background: var(--md-sys-color-surface-container); box-shadow: var(--md-sys-elevation-level2); }
+.md-top-app-bar__inner { display: flex; align-items: center; gap: 16px; height: 100%; }
+.md-top-app-bar__nav { display: none; margin-inline-start: auto; }
+.md-top-app-bar__list { display: flex; align-items: center; gap: 4px; }
+.md-top-app-bar__actions { display: flex; align-items: center; gap: 8px; margin-inline-start: auto; }
+.md-top-app-bar__cta { display: none; }
+.md-nav-link {
+  position: relative; display: inline-flex; align-items: center; min-height: 40px; padding: 0 12px;
+  border-radius: var(--md-sys-shape-corner-full); color: var(--md-sys-color-on-surface-variant); text-decoration: none;
+  font-family: var(--md-sys-typescale-label-large-font); font-size: var(--md-sys-typescale-label-large-size);
+  line-height: var(--md-sys-typescale-label-large-line-height); font-weight: var(--md-sys-typescale-label-large-weight);
+  letter-spacing: var(--md-sys-typescale-label-large-tracking);
+}
+.md-nav-link.is-active { color: var(--md-sys-color-primary); }
+.md-nav-link.is-active::after { content: ""; position: absolute; left: 12px; right: 12px; bottom: 5px; height: 2px; border-radius: 1px; background: var(--rlt-gold); }
+@media (min-width: 600px) { .md-top-app-bar__cta { display: inline-flex; } }
+@media (min-width: 840px) {
+  .md-top-app-bar__nav { display: block; }
+  .md-top-app-bar__actions { margin-inline-start: 0; }
+  .md-top-app-bar__menu { display: none; }
+}
+
+/* Logo: mark + HTML wordmark on light surfaces, full lockup image on dark ones. */
+.rlt-logo { display: inline-flex; align-items: center; gap: 10px; min-width: 0; color: inherit; text-decoration: none; }
+.rlt-logo__mark { width: 40px; height: 40px; flex: 0 0 auto; }
+.rlt-logo__wordmark { display: flex; flex-direction: column; justify-content: center; line-height: 1; white-space: nowrap; }
+.rlt-logo__name { font-family: var(--md-ref-typeface-brand); font-size: 1.125rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--md-sys-color-primary); }
+.rlt-logo__sub { margin-top: 3px; font-family: var(--md-ref-typeface-brand); font-size: 0.6875rem; font-weight: 600; letter-spacing: 0.3em; text-transform: uppercase; color: var(--md-sys-color-secondary); }
+.rlt-logo--lockup { display: inline-block; }
+.rlt-logo__lockup { width: 240px; height: auto; margin: 0 0 4px -6px; }
+.rlt-logo--footer { gap: 14px; }
+.rlt-logo--footer .rlt-logo__mark { width: 72px; height: 72px; }
+.rlt-logo--footer .rlt-logo__name { font-size: 1.5rem; color: var(--md-sys-color-on-tertiary); }
+.rlt-logo--footer .rlt-logo__sub { margin-top: 5px; font-size: 0.8125rem; color: var(--rlt-gold-light); }

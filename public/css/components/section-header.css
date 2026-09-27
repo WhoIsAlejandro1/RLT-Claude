@@ -1,0 +1,6 @@
+/* Section header: eyebrow / headline / supporting text. */
+.md-section-header { display: flex; flex-direction: column; gap: 8px; margin-bottom: 24px; }
+.md-section-header--center { align-items: center; text-align: center; margin-inline: auto; max-width: 720px; }
+.md-section-header__eyebrow { color: var(--md-sys-color-secondary); text-transform: uppercase; letter-spacing: 0.1em; }
+.md-section-header__supporting { color: var(--md-sys-color-on-surface-variant); }
+@media (min-width: 840px) { .md-section-header { margin-bottom: 32px; } }

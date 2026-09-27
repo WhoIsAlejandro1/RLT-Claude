@@ -1,0 +1,20 @@
+<%
+// Params: eyebrow, headline, supporting, align (start|center), level (heading level, default 2)
+const sh = {
+  eyebrow: locals.eyebrow || '',
+  headline: locals.headline || '',
+  supporting: locals.supporting || '',
+  align: locals.align === 'center' ? 'center' : 'start',
+  level: Math.min(6, Math.max(1, Number(locals.level) || 2)),
+};
+const headingTag = 'h' + sh.level;
+%>
+<header class="md-section-header md-section-header--<%= sh.align %>">
+<% if (sh.eyebrow) { %>
+  <p class="md-section-header__eyebrow md-label-large"><%= sh.eyebrow %></p>
+<% } %>
+  <<%= headingTag %> class="md-section-header__headline"><%= sh.headline %></<%= headingTag %>>
+<% if (sh.supporting) { %>
+  <p class="md-section-header__supporting md-body-large"><%= sh.supporting %></p>
+<% } %>
+</header>

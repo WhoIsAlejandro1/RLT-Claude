@@ -1,0 +1,73 @@
+/* M3 common buttons, icon buttons, state layers and ripple. */
+[data-ripple] { position: relative; overflow: hidden; isolation: isolate; -webkit-tap-highlight-color: transparent; }
+
+.md-button {
+  --_bg: var(--md-sys-color-primary);
+  --_fg: var(--md-sys-color-on-primary);
+  --_border: 0;
+  --_shadow: var(--md-sys-elevation-level0);
+  --_shadow-hover: var(--md-sys-elevation-level1);
+  position: relative; isolation: isolate; overflow: hidden;
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  min-height: 40px; padding: 0 24px; border: var(--_border); border-radius: var(--md-sys-shape-corner-full);
+  background: var(--_bg); color: var(--_fg);
+  font-family: var(--md-sys-typescale-label-large-font); font-size: var(--md-sys-typescale-label-large-size);
+  line-height: var(--md-sys-typescale-label-large-line-height); font-weight: var(--md-sys-typescale-label-large-weight);
+  letter-spacing: var(--md-sys-typescale-label-large-tracking);
+  text-decoration: none; text-align: center; cursor: pointer; user-select: none; white-space: nowrap;
+  box-shadow: var(--_shadow);
+  transition: box-shadow var(--md-sys-motion-duration-short4) var(--md-sys-motion-easing-standard);
+}
+.md-button::before, .md-icon-button::before, .md-nav-link::before, .md-nav-drawer__item::before, .rlt-social__link::before {
+  content: ""; position: absolute; inset: 0; border-radius: inherit; background: currentColor; opacity: 0; pointer-events: none;
+  transition: opacity var(--md-sys-motion-duration-short2) var(--md-sys-motion-easing-standard);
+}
+@media (hover: hover) {
+  .md-button:hover::before, .md-icon-button:hover::before, .md-nav-link:hover::before, .md-nav-drawer__item:hover::before, .rlt-social__link:hover::before { opacity: var(--md-sys-state-hover-state-layer-opacity); }
+  .md-button--filled:hover, .md-button--tonal:hover { box-shadow: var(--_shadow-hover); }
+}
+.md-button:focus-visible::before, .md-icon-button:focus-visible::before, .md-nav-link:focus-visible::before, .md-nav-drawer__item:focus-visible::before { opacity: var(--md-sys-state-focus-state-layer-opacity); }
+.md-button:active::before, .md-icon-button:active::before, .md-nav-link:active::before, .md-nav-drawer__item:active::before { opacity: var(--md-sys-state-pressed-state-layer-opacity); }
+
+.md-button--tonal { --_bg: var(--md-sys-color-secondary-container); --_fg: var(--md-sys-color-on-secondary-container); }
+.md-button--outlined { --_bg: transparent; --_fg: var(--md-sys-color-primary); --_border: 1px solid var(--md-sys-color-outline); --_shadow-hover: none; }
+.md-button--text { --_bg: transparent; --_fg: var(--md-sys-color-primary); --_shadow-hover: none; padding: 0 12px; }
+.md-button--elevated { --_bg: var(--md-sys-color-surface-container-low); --_fg: var(--md-sys-color-primary); --_shadow: var(--md-sys-elevation-level1); --_shadow-hover: var(--md-sys-elevation-level2); }
+
+.md-button--filled.md-button--secondary { --_bg: var(--md-sys-color-secondary); --_fg: var(--md-sys-color-on-secondary); }
+.md-button--filled.md-button--tertiary { --_bg: var(--md-sys-color-tertiary); --_fg: var(--md-sys-color-on-tertiary); }
+.md-button--tonal.md-button--tertiary { --_bg: var(--md-sys-color-tertiary-container); --_fg: var(--md-sys-color-on-tertiary-container); }
+.md-button--tonal.md-button--secondary { --_bg: var(--md-sys-color-secondary-container); --_fg: var(--md-sys-color-on-secondary-container); }
+.md-button--outlined.md-button--secondary, .md-button--text.md-button--secondary, .md-button--elevated.md-button--secondary { --_fg: var(--md-sys-color-secondary); }
+.md-button--outlined.md-button--tertiary, .md-button--text.md-button--tertiary, .md-button--elevated.md-button--tertiary { --_fg: var(--md-sys-color-tertiary); }
+
+.md-button--has-icon { padding-inline-start: 16px; }
+.md-button--has-trailing-icon { padding-inline-end: 16px; }
+.md-button--text.md-button--has-icon { padding-inline-start: 12px; }
+.md-button--text.md-button--has-trailing-icon { padding-inline-end: 12px; }
+.md-button--full { width: 100%; }
+.md-button__icon { width: 18px; height: 18px; font-size: 18px; }
+.md-button__label { position: relative; }
+.md-button:disabled, .md-button[aria-disabled="true"] {
+  --_bg: color-mix(in srgb, var(--md-sys-color-on-surface) 12%, transparent);
+  --_fg: color-mix(in srgb, var(--md-sys-color-on-surface) 38%, transparent);
+  --_border: 0; box-shadow: none; pointer-events: none;
+}
+
+.md-icon-button {
+  position: relative; isolation: isolate; overflow: hidden;
+  display: inline-grid; place-items: center; width: 40px; height: 40px; padding: 0; border: 0;
+  border-radius: var(--md-sys-shape-corner-full); background: transparent; color: var(--md-sys-color-on-surface-variant);
+  cursor: pointer;
+}
+.md-icon-button::after { content: ""; position: absolute; inset: -4px; }
+
+/* Ripple (created by js/ripple.js) */
+.md-ripple {
+  position: absolute; border-radius: 50%; background: currentColor; pointer-events: none;
+  opacity: var(--md-sys-state-pressed-state-layer-opacity); transform: scale(0);
+  animation: md-ripple-in var(--md-sys-motion-duration-medium2) var(--md-sys-motion-easing-standard) forwards;
+}
+.md-ripple--out { animation: md-ripple-out var(--md-sys-motion-duration-short4) var(--md-sys-motion-easing-standard) forwards; }
+@keyframes md-ripple-in { to { transform: scale(1); } }
+@keyframes md-ripple-out { from { transform: scale(1); opacity: var(--md-sys-state-pressed-state-layer-opacity); } to { transform: scale(1); opacity: 0; } }

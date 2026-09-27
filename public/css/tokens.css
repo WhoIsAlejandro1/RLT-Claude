@@ -1,0 +1,117 @@
+/* Material Design 3 system tokens for Renewed Life Therapies.
+   Light is the default. Dark is opt-in: <html data-theme="dark">. */
+:root {
+  color-scheme: light;
+  --md-sys-color-primary: #5A6347;
+  --md-sys-color-on-primary: #FFFFFF;
+  --md-sys-color-primary-container: #DDE5C9;
+  --md-sys-color-on-primary-container: #171E0C;
+  --md-sys-color-inverse-primary: #C1CAAD;
+  --md-sys-color-secondary: #6F5B24;
+  --md-sys-color-on-secondary: #FFFFFF;
+  --md-sys-color-secondary-container: #F7E2AE;
+  --md-sys-color-on-secondary-container: #261A00;
+  --md-sys-color-tertiary: #2F4230;
+  --md-sys-color-on-tertiary: #FFFFFF;
+  --md-sys-color-tertiary-container: #CFE8CC;
+  --md-sys-color-on-tertiary-container: #0B1F0E;
+  --md-sys-color-error: #BA1A1A;
+  --md-sys-color-on-error: #FFFFFF;
+  --md-sys-color-error-container: #FFDAD6;
+  --md-sys-color-on-error-container: #410002;
+  --md-sys-color-surface: #FBF8F1;
+  --md-sys-color-background: #FBF8F1;
+  --md-sys-color-on-surface: #1C1B16;
+  --md-sys-color-on-background: #1C1B16;
+  --md-sys-color-surface-dim: #DBD6C8;
+  --md-sys-color-surface-bright: #FBF8F1;
+  --md-sys-color-surface-container-lowest: #FFFFFF;
+  --md-sys-color-surface-container-low: #F5F1E6;
+  --md-sys-color-surface-container: #EFEBDE;
+  --md-sys-color-surface-container-high: #E9E5D7;
+  --md-sys-color-surface-container-highest: #E3DDCB;
+  --md-sys-color-surface-variant: #E2E3D2;
+  --md-sys-color-on-surface-variant: #464A3D;
+  --md-sys-color-outline: #767A6B;
+  --md-sys-color-outline-variant: #C7CAB9;
+  --md-sys-color-inverse-surface: #31302C;
+  --md-sys-color-inverse-on-surface: #F4F0E8;
+  --md-sys-color-surface-tint: #5A6347;
+  --md-sys-color-scrim: #000000;
+  --md-sys-color-shadow: #000000;
+  --md-sys-color-shadow-rgb: 0 0 0;
+
+  /* Brand extras: decorative only (gold is 2.2:1 on cream, never use for text). */
+  --rlt-gold: #C9A961;
+  --rlt-gold-light: #E3CB8A;
+  --rlt-gold-dark: #9C7B3C;
+  --rlt-olive: #6B7355;
+  --rlt-forest: #1F2A1F;
+  --rlt-cream: #F5EFE0;
+  --rlt-beige: #E6DCC6;
+
+  --md-sys-shape-corner-none: 0;
+  --md-sys-shape-corner-extra-small: 4px;
+  --md-sys-shape-corner-small: 8px;
+  --md-sys-shape-corner-medium: 12px;
+  --md-sys-shape-corner-large: 16px;
+  --md-sys-shape-corner-extra-large: 28px;
+  --md-sys-shape-corner-full: 9999px;
+
+  --md-sys-elevation-level0: none;
+  --md-sys-elevation-level1: 0 1px 2px rgb(var(--md-sys-color-shadow-rgb) / 0.30), 0 1px 3px 1px rgb(var(--md-sys-color-shadow-rgb) / 0.15);
+  --md-sys-elevation-level2: 0 1px 2px rgb(var(--md-sys-color-shadow-rgb) / 0.30), 0 2px 6px 2px rgb(var(--md-sys-color-shadow-rgb) / 0.15);
+  --md-sys-elevation-level3: 0 1px 3px rgb(var(--md-sys-color-shadow-rgb) / 0.30), 0 4px 8px 3px rgb(var(--md-sys-color-shadow-rgb) / 0.15);
+  --md-sys-elevation-level4: 0 2px 3px rgb(var(--md-sys-color-shadow-rgb) / 0.30), 0 6px 10px 4px rgb(var(--md-sys-color-shadow-rgb) / 0.15);
+  --md-sys-elevation-level5: 0 4px 4px rgb(var(--md-sys-color-shadow-rgb) / 0.30), 0 8px 12px 6px rgb(var(--md-sys-color-shadow-rgb) / 0.15);
+
+  --md-sys-state-hover-state-layer-opacity: 0.08;
+  --md-sys-state-focus-state-layer-opacity: 0.10;
+  --md-sys-state-pressed-state-layer-opacity: 0.10;
+  --md-sys-state-dragged-state-layer-opacity: 0.16;
+  --md-sys-state-disabled-content-opacity: 0.38;
+  --md-sys-state-disabled-container-opacity: 0.12;
+
+  --md-sys-motion-easing-standard: cubic-bezier(0.2, 0, 0, 1);
+  --md-sys-motion-easing-standard-accelerate: cubic-bezier(0.3, 0, 1, 1);
+  --md-sys-motion-easing-standard-decelerate: cubic-bezier(0, 0, 0, 1);
+  --md-sys-motion-easing-emphasized: cubic-bezier(0.2, 0, 0, 1);
+  --md-sys-motion-easing-emphasized-decelerate: cubic-bezier(0.05, 0.7, 0.1, 1);
+  --md-sys-motion-easing-emphasized-accelerate: cubic-bezier(0.3, 0, 0.8, 0.15);
+  --md-sys-motion-duration-short1: 50ms;  --md-sys-motion-duration-short2: 100ms;
+  --md-sys-motion-duration-short3: 150ms; --md-sys-motion-duration-short4: 200ms;
+  --md-sys-motion-duration-medium1: 250ms; --md-sys-motion-duration-medium2: 300ms;
+  --md-sys-motion-duration-medium3: 350ms; --md-sys-motion-duration-medium4: 400ms;
+  --md-sys-motion-duration-long1: 450ms; --md-sys-motion-duration-long2: 500ms;
+  --md-sys-motion-duration-long3: 550ms; --md-sys-motion-duration-long4: 600ms;
+
+  --rlt-content-max: 1200px;
+  --rlt-margin: 16px;
+  --rlt-gutter: 16px;
+  --rlt-columns: 4;
+  --rlt-section-gap: 48px;
+  --rlt-appbar-height: 64px;
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --md-sys-color-primary: #C1CAAD; --md-sys-color-on-primary: #2D3421;
+  --md-sys-color-primary-container: #434B31; --md-sys-color-on-primary-container: #DDE5C9;
+  --md-sys-color-inverse-primary: #5A6347;
+  --md-sys-color-secondary: #E3CB8A; --md-sys-color-on-secondary: #3D2E00;
+  --md-sys-color-secondary-container: #574518; --md-sys-color-on-secondary-container: #F7E2AE;
+  --md-sys-color-tertiary: #B4CEB1; --md-sys-color-on-tertiary: #1F3521;
+  --md-sys-color-tertiary-container: #354B36; --md-sys-color-on-tertiary-container: #CFE8CC;
+  --md-sys-color-error: #FFB4AB; --md-sys-color-on-error: #690005;
+  --md-sys-color-error-container: #93000A; --md-sys-color-on-error-container: #FFDAD6;
+  --md-sys-color-surface: #13130F; --md-sys-color-background: #13130F;
+  --md-sys-color-on-surface: #E5E2D9; --md-sys-color-on-background: #E5E2D9;
+  --md-sys-color-surface-dim: #13130F; --md-sys-color-surface-bright: #3A3934;
+  --md-sys-color-surface-container-lowest: #0E0E0A; --md-sys-color-surface-container-low: #1C1B16;
+  --md-sys-color-surface-container: #201F1A; --md-sys-color-surface-container-high: #2A2A24;
+  --md-sys-color-surface-container-highest: #35342E; --md-sys-color-surface-variant: #464A3D;
+  --md-sys-color-on-surface-variant: #C7CAB9;
+  --md-sys-color-outline: #8F937F; --md-sys-color-outline-variant: #464A3D;
+  --md-sys-color-inverse-surface: #E5E2D9; --md-sys-color-inverse-on-surface: #31302C;
+  --md-sys-color-surface-tint: #C1CAAD;
+}

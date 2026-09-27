@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="<%= site.locale %>" class="no-js">
+<head>
+<%- include('partials/head') %>
+<%- defineContent('head') %>
+</head>
+<body class="<%= bodyClass %>">
+  <a class="md-skip-link" href="#main">Skip to content</a>
+  <div class="rlt-scroll-sentinel" aria-hidden="true"></div>
+  <%- include('partials/top-app-bar') %>
+  <%- include('partials/nav-drawer') %>
+  <main id="main" class="rlt-main" tabindex="-1">
+<% if (notice) { %>
+    <div class="rlt-container rlt-notice">
+      <%- include('partials/alert', { kind: notice.kind, text: notice.text, dismissible: true }) %>
+    </div>
+<% } %>
+<%- body %>
+  </main>
+  <%- include('partials/footer') %>
+  <script type="module" src="/js/main.js?v=<%= assetVersion %>"></script>
+<%- defineContent('scripts') %>
+</body>
+</html>

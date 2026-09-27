@@ -1,0 +1,22 @@
+<%
+// Params: label, href | type, variant (filled|tonal|outlined|text|elevated),
+// color (primary|secondary|tertiary), icon, trailingIcon, full, class, attrs (trusted raw attributes)
+const btn = {
+  label: locals.label || '',
+  href: locals.href || null,
+  type: locals.type || 'button',
+  variant: locals.variant || 'filled',
+  color: locals.color || 'primary',
+  icon: locals.icon || null,
+  trailingIcon: locals.trailingIcon || null,
+  full: !!locals.full,
+  attrs: locals.attrs || '',
+};
+let btnClass = 'md-button md-button--' + btn.variant;
+if (btn.color !== 'primary') btnClass += ' md-button--' + btn.color;
+if (btn.full) btnClass += ' md-button--full';
+if (btn.icon) btnClass += ' md-button--has-icon';
+if (btn.trailingIcon) btnClass += ' md-button--has-trailing-icon';
+if (locals.class) btnClass += ' ' + locals.class;
+const btnAttrs = btn.attrs ? ' ' + btn.attrs : '';
+%><% if (btn.href) { %><a class="<%= btnClass %>" href="<%= btn.href %>" data-ripple<%- btnAttrs %>><% } else { %><button class="<%= btnClass %>" type="<%= btn.type %>" data-ripple<%- btnAttrs %>><% } %><% if (btn.icon) { %><%- include('partials/icon', { name: btn.icon, class: 'md-button__icon' }) %><% } %><span class="md-button__label"><%= btn.label %></span><% if (btn.trailingIcon) { %><%- include('partials/icon', { name: btn.trailingIcon, class: 'md-button__icon md-button__icon--trailing' }) %><% } %><% if (btn.href) { %></a><% } else { %></button><% } %>

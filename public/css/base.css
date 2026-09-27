@@ -1,0 +1,39 @@
+/* Reset and document defaults. */
+*, *::before, *::after { box-sizing: border-box; }
+* { margin: 0; }
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; scroll-padding-top: calc(var(--rlt-appbar-height) + 16px); }
+body {
+  min-height: 100vh; min-height: 100dvh;
+  display: flex; flex-direction: column;
+  background: var(--md-sys-color-surface); color: var(--md-sys-color-on-surface);
+  font-family: var(--md-sys-typescale-body-large-font);
+  font-size: var(--md-sys-typescale-body-large-size);
+  line-height: var(--md-sys-typescale-body-large-line-height);
+  font-weight: var(--md-sys-typescale-body-large-weight);
+  letter-spacing: var(--md-sys-typescale-body-large-tracking);
+  -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility;
+}
+.rlt-main { flex: 1 0 auto; }
+.rlt-main:focus { outline: none; }
+img, svg, video { display: block; max-width: 100%; }
+img { height: auto; }
+button, input, select, textarea { font: inherit; color: inherit; letter-spacing: inherit; }
+button { cursor: pointer; }
+a { color: var(--md-sys-color-primary); text-decoration-thickness: 1px; text-underline-offset: 0.15em; }
+a:hover { text-decoration-thickness: 2px; }
+p { margin: 0; }
+ul[class], ol[class] { list-style: none; padding: 0; margin: 0; }
+.md-divider { border: 0; border-top: 1px solid var(--md-sys-color-outline-variant); margin: 8px 0; }
+:focus-visible { outline: 3px solid var(--md-sys-color-secondary); outline-offset: 2px; }
+
+/* Icons: Material Symbols ligatures stay hidden until the font is confirmed loaded (see js/fonts.js). */
+.md-icon { display: inline-block; width: 24px; height: 24px; flex: 0 0 auto; vertical-align: middle; }
+.md-icon--svg { fill: currentColor; }
+.md-icon--font {
+  font-family: "Material Symbols Outlined"; font-weight: normal; font-style: normal; font-size: 24px; line-height: 1;
+  letter-spacing: normal; text-transform: none; white-space: nowrap; word-wrap: normal; direction: ltr;
+  font-feature-settings: "liga"; -webkit-font-feature-settings: "liga";
+  font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
+  overflow: hidden; visibility: hidden;
+}
+html.md-icons-ready .md-icon--font { visibility: visible; }

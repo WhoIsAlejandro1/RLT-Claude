@@ -1,0 +1,10 @@
+<%
+// Inline SVG for the icons that must render offline; Material Symbols ligature otherwise.
+const SVG_PATHS = {
+  menu: 'M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z',
+  close: 'M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z',
+  image: 'M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z',
+};
+const iconName = locals.name || 'image';
+const iconClass = locals.class ? ' ' + locals.class : '';
+%><% if (SVG_PATHS[iconName]) { %><svg class="md-icon md-icon--svg<%= iconClass %>" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false"><path d="<%= SVG_PATHS[iconName] %>"/></svg><% } else { %><span class="md-icon md-icon--font<%= iconClass %>" aria-hidden="true" translate="no"><%= iconName %></span><% } %>

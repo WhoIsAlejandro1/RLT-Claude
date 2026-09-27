@@ -1,0 +1,26 @@
+<%
+const pageTitle = title ? `${title} · ${site.name}` : `${site.name} · ${site.tagline}`;
+const textFonts = 'https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Roboto:wght@400;500;700&display=swap';
+// Keep icon_names alphabetical and in sync with every icon rendered through the font.
+const iconNames = ['arrow_forward','call','check_circle','error','health_and_safety','info','location_on','mail','schedule','self_improvement','spa','support_agent','trending_up','verified'];
+const iconFont = 'https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=' + iconNames.join(',') + '&display=block';
+%>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title><%= pageTitle %></title>
+<meta name="description" content="<%= description %>">
+<meta name="color-scheme" content="light">
+<meta name="theme-color" content="<%= site.theme.light %>">
+<link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32.png">
+<link rel="icon" type="image/png" sizes="48x48" href="/images/favicon-48.png">
+<link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="<%- textFonts %>" media="print" onload="this.media='all'">
+<link rel="stylesheet" href="<%- iconFont %>" media="print" onload="this.media='all'">
+<noscript>
+  <link rel="stylesheet" href="<%- textFonts %>">
+  <link rel="stylesheet" href="<%- iconFont %>">
+</noscript>
+<link rel="stylesheet" href="/css/main.css?v=<%= assetVersion %>">
+<script>document.documentElement.classList.replace('no-js', 'js');</script>

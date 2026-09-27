@@ -1,0 +1,29 @@
+<%
+const drawerItems = [{ label: 'Home', href: '/' }].concat(site.nav);
+const phoneHref = 'tel:' + String(site.contact.phone).replace(/[^+\d]/g, '');
+%>
+<dialog id="nav-drawer" class="md-nav-drawer" aria-label="Site navigation">
+  <div class="md-nav-drawer__sheet">
+    <div class="md-nav-drawer__header">
+      <%- include('partials/logo', { variant: 'mark' }) %>
+      <button type="button" class="md-icon-button md-nav-drawer__close" aria-label="Close navigation menu" data-drawer-close data-ripple>
+        <%- include('partials/icon', { name: 'close', class: '' }) %>
+      </button>
+    </div>
+    <nav class="md-nav-drawer__nav" aria-label="Primary">
+      <ul class="md-nav-drawer__list">
+<% drawerItems.forEach((item) => { const active = isActive(item.href); %>
+        <li><a class="md-nav-drawer__item<%= active ? ' is-active' : '' %>" href="<%= item.href %>"<%- active ? ' aria-current="page"' : '' %> data-ripple><span class="md-nav-drawer__label"><%= item.label %></span></a></li>
+<% }); %>
+      </ul>
+    </nav>
+    <hr class="md-divider">
+    <div class="md-nav-drawer__cta">
+      <%- include('partials/button', { label: site.cta.label, href: site.cta.href, type: 'button', variant: 'filled', color: 'tertiary', icon: null, trailingIcon: null, full: true, class: '', attrs: '' }) %>
+    </div>
+    <div class="md-nav-drawer__contact md-body-medium">
+      <a class="md-nav-drawer__contact-link" href="<%= phoneHref %>"><%- include('partials/icon', { name: 'call', class: '' }) %><span><%= site.contact.phone %></span></a>
+      <a class="md-nav-drawer__contact-link" href="mailto:<%= site.contact.email %>"><%- include('partials/icon', { name: 'mail', class: '' }) %><span><%= site.contact.email %></span></a>
+    </div>
+  </div>
+</dialog>

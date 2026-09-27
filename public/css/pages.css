@@ -1,0 +1,57 @@
+/* Section and page layouts. Responsive steps follow the M3 window classes: 600 / 840 / 1200. */
+
+/* Card grid (services, values) */
+.rlt-card-grid__grid { display: grid; gap: var(--rlt-gutter); grid-template-columns: 1fr; }
+@media (min-width: 600px) { .rlt-card-grid__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (min-width: 840px) { .rlt-card-grid__grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+
+/* Feature split (booking, about teaser, story) */
+.rlt-feature__grid { display: grid; gap: 32px; align-items: center; }
+.rlt-feature__copy { display: flex; flex-direction: column; gap: 16px; }
+.rlt-feature__copy .md-section-header { margin-bottom: 0; }
+.rlt-feature__text { max-width: 60ch; color: var(--md-sys-color-on-surface-variant); }
+.rlt-feature__actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 8px; }
+@media (min-width: 840px) {
+  .rlt-feature__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 48px; }
+  .rlt-feature--reverse .rlt-feature__media { order: -1; }
+}
+
+/* Gallery */
+.rlt-gallery__grid { display: grid; gap: var(--rlt-gutter); grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.rlt-gallery__actions { display: flex; justify-content: center; margin-top: 32px; }
+@media (min-width: 840px) { .rlt-gallery__grid { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+
+/* Newsletter */
+.rlt-newsletter__inner { display: flex; flex-direction: column; align-items: center; }
+.rlt-newsletter__form { width: 100%; max-width: 560px; }
+
+/* CTA band */
+.rlt-cta-band { background: var(--md-sys-color-tertiary-container); color: var(--md-sys-color-on-tertiary-container); }
+.rlt-cta-band__inner { display: flex; flex-direction: column; align-items: center; gap: 16px; max-width: 720px; text-align: center; }
+.rlt-cta-band__headline { color: inherit; }
+.rlt-cta-band__supporting { color: inherit; opacity: 0.85; }
+
+/* Contact */
+.rlt-contact__grid { display: grid; gap: 32px; align-items: start; }
+.rlt-contact__info { display: flex; flex-direction: column; gap: 16px; }
+.rlt-contact__info .md-section-header { margin-bottom: 0; }
+.rlt-contact__list { display: flex; flex-direction: column; gap: 12px; }
+.rlt-contact__list li { display: flex; gap: 12px; align-items: flex-start; }
+.rlt-contact__list .md-icon { color: var(--md-sys-color-primary); }
+.rlt-contact__line { display: block; }
+.rlt-connect__inner { display: flex; flex-direction: column; align-items: center; }
+.rlt-connect__form { width: 100%; max-width: 720px; }
+@media (min-width: 840px) { .rlt-contact__grid { grid-template-columns: 7fr 5fr; gap: 48px; } }
+
+/* Login */
+.rlt-login { display: grid; place-items: center; min-height: calc(100vh - var(--rlt-appbar-height)); min-height: calc(100dvh - var(--rlt-appbar-height)); }
+.rlt-login__inner { display: flex; justify-content: center; }
+.rlt-login__card { width: 100%; max-width: 420px; }
+.rlt-login__card .md-section-header { margin-bottom: 8px; }
+.rlt-login__links { display: flex; justify-content: center; gap: 16px; margin-top: 8px; }
+
+/* Error pages */
+.rlt-error__inner { display: flex; flex-direction: column; align-items: center; gap: 12px; max-width: 560px; text-align: center; }
+.rlt-error__code { color: var(--md-sys-color-outline-variant); }
+.rlt-error__text { color: var(--md-sys-color-on-surface-variant); }
+.rlt-error__actions { margin-top: 12px; }

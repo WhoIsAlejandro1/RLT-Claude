@@ -1,0 +1,12 @@
+<%
+// Params: section { id, headline, supporting, form }
+const nl = locals.section || {};
+%>
+<section id="<%= nl.id %>" class="rlt-section rlt-newsletter rlt-section--tonal">
+  <div class="rlt-container rlt-newsletter__inner">
+    <%- include('partials/section-header', { eyebrow: '', headline: nl.headline || '', supporting: nl.supporting || '', align: 'center', level: 2 }) %>
+    <div class="rlt-newsletter__form">
+      <%- include('partials/form', { form: nl.form, inline: true, submitColor: 'primary' }) %>
+    </div>
+  </div>
+</section>

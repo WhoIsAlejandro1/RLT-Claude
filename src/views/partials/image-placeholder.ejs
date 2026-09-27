@@ -1,0 +1,34 @@
+<%
+// Params: src (null => placeholder box), ratio 'w/h', label, alt, caption, class
+const ph = {
+  src: locals.src || null,
+  ratio: locals.ratio || '16/9',
+  label: locals.label || 'Image placeholder',
+  alt: locals.alt || '',
+  caption: locals.caption || '',
+  class: locals.class || '',
+};
+const ratioParts = String(ph.ratio).split('/');
+const phW = Number(ratioParts[0]) || 16;
+const phH = Number(ratioParts[1]) || 9;
+%>
+<% if (ph.src) { %>
+<figure class="md-figure<%= ph.class ? ' ' + ph.class : '' %>">
+  <img class="md-figure__img" src="<%= ph.src %>" alt="<%= ph.alt || ph.label %>" loading="lazy" style="aspect-ratio: <%= phW %> / <%= phH %>">
+<% if (ph.caption) { %>
+  <figcaption class="md-figure__caption md-body-small"><%= ph.caption %></figcaption>
+<% } %>
+</figure>
+<% } else { %>
+<figure class="md-placeholder<%= ph.class ? ' ' + ph.class : '' %>" style="--ph-w: <%= phW %>; --ph-h: <%= phH %>" role="img" aria-label="<%= ph.alt || ph.label %>">
+  <div class="md-placeholder__box">
+    <div class="md-placeholder__inner">
+      <%- include('partials/icon', { name: 'image', class: 'md-placeholder__icon' }) %>
+      <span class="md-placeholder__label md-label-medium"><%= ph.label %></span>
+    </div>
+  </div>
+<% if (ph.caption) { %>
+  <figcaption class="md-placeholder__caption md-body-small"><%= ph.caption %></figcaption>
+<% } %>
+</figure>
+<% } %>

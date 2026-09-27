@@ -1,0 +1,15 @@
+<%
+// Params: section { id, eyebrow, headline, supporting, cards[], cardVariant }, tonal
+const cg = locals.section || {};
+const cgVariant = cg.cardVariant || 'elevated';
+%>
+<section id="<%= cg.id %>" class="rlt-section rlt-card-grid<%= locals.tonal ? ' rlt-section--tonal' : '' %>">
+  <div class="rlt-container">
+    <%- include('partials/section-header', { eyebrow: cg.eyebrow || '', headline: cg.headline || '', supporting: cg.supporting || '', align: 'center', level: 2 }) %>
+    <div class="rlt-card-grid__grid">
+<% (cg.cards || []).forEach((c) => { %>
+      <%- include('partials/card', { variant: cgVariant, title: c.title, text: c.text || '', icon: c.icon || null, image: c.image || null, href: c.href || null, actions: c.actions || [] }) %>
+<% }); %>
+    </div>
+  </div>
+</section>

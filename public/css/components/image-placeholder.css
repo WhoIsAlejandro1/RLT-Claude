@@ -1,0 +1,17 @@
+/* Image placeholder box (aspect-ratio) and the real-image figure it becomes once src is set. */
+.md-placeholder, .md-figure { margin: 0; min-width: 0; }
+.md-placeholder__box {
+  aspect-ratio: var(--ph-w, 16) / var(--ph-h, 9); display: grid; place-items: center; overflow: hidden;
+  border-radius: var(--md-sys-shape-corner-large); border: 1px dashed var(--md-sys-color-outline-variant);
+  background-color: var(--md-sys-color-surface-container-highest);
+  background-image: repeating-linear-gradient(45deg, transparent 0 14px, rgb(0 0 0 / 0.025) 14px 28px);
+  color: var(--md-sys-color-on-surface-variant);
+}
+.md-placeholder__inner { display: grid; justify-items: center; gap: 8px; padding: 16px; text-align: center; }
+.md-placeholder__icon { width: 48px; height: 48px; opacity: 0.7; }
+.md-placeholder__caption, .md-figure__caption { margin-top: 8px; color: var(--md-sys-color-on-surface-variant); }
+.md-figure__img { width: 100%; object-fit: cover; border-radius: var(--md-sys-shape-corner-large); }
+@supports not (aspect-ratio: 1 / 1) {
+  .md-placeholder__box { position: relative; height: 0; padding-bottom: calc(var(--ph-h, 9) / var(--ph-w, 16) * 100%); }
+  .md-placeholder__inner { position: absolute; inset: 0; align-content: center; }
+}

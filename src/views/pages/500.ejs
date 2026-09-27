@@ -1,0 +1,10 @@
+<section class="rlt-section rlt-error">
+  <div class="rlt-container rlt-error__inner">
+    <p class="rlt-error__code md-display-large" aria-hidden="true">500</p>
+    <h1 class="rlt-error__headline"><%= content.headline %></h1>
+    <p class="rlt-error__text md-body-large"><%= content.text %></p>
+    <div class="rlt-error__actions">
+      <%- include('partials/button', { label: content.cta.label, href: content.cta.href, type: 'button', variant: 'filled', color: 'primary', icon: null, trailingIcon: null, full: false, class: '', attrs: '' }) %>
+    </div>
+  </div>
+</section>

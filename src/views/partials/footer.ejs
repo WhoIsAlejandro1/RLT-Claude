@@ -1,0 +1,45 @@
+<%
+const footerPhoneHref = 'tel:' + String(site.contact.phone).replace(/[^+\d]/g, '');
+%>
+<footer class="rlt-footer">
+  <div class="rlt-container">
+    <div class="rlt-footer__grid">
+      <div class="rlt-footer__brand">
+        <%- include('partials/logo', { variant: 'footer' }) %>
+        <p class="rlt-footer__tagline md-body-medium"><%= site.tagline %></p>
+      </div>
+<% site.footer.columns.forEach((col) => { %>
+      <nav class="rlt-footer__col" aria-label="<%= col.title %>">
+        <h2 class="rlt-footer__title md-title-small"><%= col.title %></h2>
+        <ul class="rlt-footer__links">
+<% col.links.forEach((link) => { %>
+          <li><a class="rlt-footer__link" href="<%= link.href %>"><%= link.label %></a></li>
+<% }); %>
+        </ul>
+      </nav>
+<% }); %>
+      <div class="rlt-footer__col rlt-footer__contact">
+        <h2 class="rlt-footer__title md-title-small">Contact</h2>
+        <ul class="rlt-footer__links">
+          <li><a class="rlt-footer__link rlt-footer__link--icon" href="<%= footerPhoneHref %>"><%- include('partials/icon', { name: 'call', class: '' }) %><span><%= site.contact.phone %></span></a></li>
+          <li><a class="rlt-footer__link rlt-footer__link--icon" href="mailto:<%= site.contact.email %>"><%- include('partials/icon', { name: 'mail', class: '' }) %><span><%= site.contact.email %></span></a></li>
+          <li><span class="rlt-footer__line rlt-footer__link--icon"><%- include('partials/icon', { name: 'location_on', class: '' }) %><span><%= site.contact.address.join(', ') %></span></span></li>
+          <li><span class="rlt-footer__line rlt-footer__link--icon"><%- include('partials/icon', { name: 'schedule', class: '' }) %><span><%= site.contact.hours.join(' / ') %></span></span></li>
+        </ul>
+        <ul class="rlt-social" aria-label="Social media">
+<% site.social.forEach((s) => { %>
+          <li><a class="rlt-social__link" href="<%= s.href %>" aria-label="<%= s.label %>" title="<%= s.label %>" data-ripple><span aria-hidden="true"><%= s.label.charAt(0) %></span></a></li>
+<% }); %>
+        </ul>
+      </div>
+    </div>
+    <div class="rlt-footer__legal md-body-small">
+      <p class="rlt-footer__copyright">&copy; <%= year %> <%= site.name %>. All rights reserved.</p>
+      <ul class="rlt-footer__legal-links">
+<% site.footer.legal.forEach((link) => { %>
+        <li><a href="<%= link.href %>"><%= link.label %></a></li>
+<% }); %>
+      </ul>
+    </div>
+  </div>
+</footer>

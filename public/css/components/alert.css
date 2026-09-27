@@ -1,0 +1,10 @@
+/* Inline banner for flash notices and form-level messages. */
+.md-alert {
+  display: flex; align-items: center; gap: 12px; padding: 12px 8px 12px 16px;
+  border-radius: var(--md-sys-shape-corner-medium);
+  background: var(--md-sys-color-secondary-container); color: var(--md-sys-color-on-secondary-container);
+}
+.md-alert--success { background: var(--md-sys-color-primary-container); color: var(--md-sys-color-on-primary-container); }
+.md-alert--error { background: var(--md-sys-color-error-container); color: var(--md-sys-color-on-error-container); }
+.md-alert__text { flex: 1 1 auto; }
+.md-alert__dismiss { color: inherit; flex: 0 0 auto; }

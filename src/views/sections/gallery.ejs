@@ -1,0 +1,19 @@
+<%
+// Params: section { id, eyebrow, headline, supporting, items[], cta }, tonal
+const gal = locals.section || {};
+%>
+<section id="<%= gal.id %>" class="rlt-section rlt-gallery<%= locals.tonal ? ' rlt-section--tonal' : '' %>">
+  <div class="rlt-container">
+    <%- include('partials/section-header', { eyebrow: gal.eyebrow || '', headline: gal.headline || '', supporting: gal.supporting || '', align: 'center', level: 2 }) %>
+    <div class="rlt-gallery__grid">
+<% (gal.items || []).forEach((item, i) => { %>
+      <%- include('partials/image-placeholder', { src: item.src || null, ratio: item.ratio || '1/1', label: item.label || ('Photo ' + (i + 1)), alt: item.alt || '', caption: item.caption || '', class: 'rlt-gallery__item' }) %>
+<% }); %>
+    </div>
+<% if (gal.cta) { %>
+    <div class="rlt-gallery__actions">
+      <%- include('partials/button', { label: gal.cta.label, href: gal.cta.href, type: 'button', variant: gal.cta.variant || 'filled', color: gal.cta.color || 'primary', icon: null, trailingIcon: gal.cta.trailingIcon || null, full: false, class: '', attrs: '' }) %>
+    </div>
+<% } %>
+  </div>
+</section>

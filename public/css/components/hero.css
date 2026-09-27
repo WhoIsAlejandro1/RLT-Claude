@@ -1,0 +1,22 @@
+/* Hero: split (copy + media) on the home page, simple title band elsewhere. */
+.rlt-hero { position: relative; overflow: hidden; padding-block: 48px; background: var(--md-sys-color-surface-container-low); }
+.rlt-hero::before {
+  content: ""; position: absolute; right: -80px; top: -40px; width: 420px; height: 420px; pointer-events: none;
+  background: url("/images/logo-mark-512.png") center / contain no-repeat; opacity: 0.06;
+}
+.rlt-hero__grid, .rlt-hero__inner { position: relative; }
+.rlt-hero__grid { display: grid; gap: 32px; align-items: center; }
+.rlt-hero__copy { display: flex; flex-direction: column; gap: 16px; }
+.rlt-hero__eyebrow { color: var(--md-sys-color-secondary); text-transform: uppercase; letter-spacing: 0.1em; }
+.rlt-hero__subhead { max-width: 56ch; color: var(--md-sys-color-on-surface-variant); font-family: var(--md-ref-typeface-plain); font-weight: 400; }
+.rlt-hero__actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 8px; }
+.rlt-hero--simple { text-align: center; }
+.rlt-hero--simple .rlt-hero__inner { display: flex; flex-direction: column; align-items: center; gap: 12px; }
+.rlt-hero--simple .rlt-hero__subhead { margin-inline: auto; }
+@media (max-width: 599px) { .rlt-hero__actions .md-button { flex: 1 1 100%; } }
+@media (min-width: 600px) { .rlt-hero { padding-block: 64px; } }
+@media (min-width: 840px) {
+  .rlt-hero { padding-block: 80px; }
+  .rlt-hero__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 48px; }
+}
+@media (min-width: 1200px) { .rlt-hero__grid { grid-template-columns: 5fr 7fr; } }

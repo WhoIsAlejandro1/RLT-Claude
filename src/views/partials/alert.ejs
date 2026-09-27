@@ -1,0 +1,14 @@
+<%
+// Params: kind (success|error|info), text, dismissible
+const alertKind = ['success', 'error', 'info'].includes(locals.kind) ? locals.kind : 'info';
+const alertIcon = { success: 'check_circle', error: 'error', info: 'info' }[alertKind];
+%>
+<div class="md-alert md-alert--<%= alertKind %>" role="<%= alertKind === 'error' ? 'alert' : 'status' %>">
+  <%- include('partials/icon', { name: alertIcon, class: 'md-alert__icon' }) %>
+  <p class="md-alert__text md-body-medium"><%= locals.text || '' %></p>
+<% if (locals.dismissible) { %>
+  <button type="button" class="md-icon-button md-alert__dismiss" aria-label="Dismiss" data-alert-dismiss data-ripple>
+    <%- include('partials/icon', { name: 'close', class: '' }) %>
+  </button>
+<% } %>
+</div>

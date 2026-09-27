@@ -1,0 +1,27 @@
+/* M3 modal navigation drawer built on <dialog>. UA dialog styles are reset explicitly. */
+.md-nav-drawer {
+  position: fixed; inset: 0 auto 0 0; margin: 0; padding: 0; border: 0;
+  width: min(360px, 85vw); max-width: none; height: 100vh; height: 100dvh; max-height: none;
+  background: var(--md-sys-color-surface-container-low); color: var(--md-sys-color-on-surface);
+  border-radius: 0 var(--md-sys-shape-corner-large) var(--md-sys-shape-corner-large) 0;
+  box-shadow: var(--md-sys-elevation-level1); overflow: hidden;
+  transform: translateX(-100%);
+  transition: transform var(--md-sys-motion-duration-medium2) var(--md-sys-motion-easing-emphasized-decelerate);
+}
+.md-nav-drawer.is-open { transform: none; }
+.md-nav-drawer::backdrop { background: rgb(0 0 0 / 0.32); opacity: 0; transition: opacity 300ms ease; }
+.md-nav-drawer.is-open::backdrop { opacity: 1; }
+.md-nav-drawer__sheet { display: flex; flex-direction: column; height: 100%; padding: 12px; overflow-y: auto; }
+.md-nav-drawer__header { display: flex; align-items: center; justify-content: space-between; gap: 8px; padding: 4px 4px 12px; }
+.md-nav-drawer__list { display: flex; flex-direction: column; gap: 4px; }
+.md-nav-drawer__item {
+  position: relative; display: flex; align-items: center; gap: 12px; min-height: 56px; padding: 0 16px 0 24px;
+  border-radius: var(--md-sys-shape-corner-full); color: var(--md-sys-color-on-surface-variant); text-decoration: none;
+  font-family: var(--md-sys-typescale-label-large-font); font-size: var(--md-sys-typescale-label-large-size);
+  font-weight: var(--md-sys-typescale-label-large-weight); letter-spacing: var(--md-sys-typescale-label-large-tracking);
+}
+.md-nav-drawer__item.is-active { background: var(--md-sys-color-secondary-container); color: var(--md-sys-color-on-secondary-container); }
+.md-nav-drawer__cta { padding: 8px 4px; }
+.md-nav-drawer__contact { display: flex; flex-direction: column; gap: 4px; margin-top: auto; padding: 8px 4px 4px; color: var(--md-sys-color-on-surface-variant); }
+.md-nav-drawer__contact-link { display: inline-flex; align-items: center; gap: 12px; min-height: 40px; color: inherit; text-decoration: none; }
+html.is-drawer-open { overflow: hidden; }
